@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Required meta tags-->
+    <meta charset="utf-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!-- Color theme for statusbar (Android only) -->
+    <meta name="theme-color" content="#2196f3">
+    <!-- Your app title -->
+    <title>Template Tab</title>
+    <!-- Path to Framework7 Library Bundle CSS -->
+    <link rel="stylesheet" href="lib/framework7-bundle.min.css">
+    <!-- CSS PERSONALIZADO PARA MENU-->
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/details.css">
+    <link rel="stylesheet" href="css/carrinho.css">
+    <!--Ícones Material Design-->
+    <link rel="stylesheet" href="css/materialdesignicons.min.css">
+    <!--Ícones Remix Icon-->
+    <link rel="stylesheet" href="css/Remixicon.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- App root element -->
+    <div id="app">
+
+        <!-- Your main view, should have "view-main" class -->
+        <div class="view view-main">
+
+            <!-- TAB BAR-->
+            <div id="menuPrincipal" class="toolbar toolbar-bottom">
+                <div class="toolbar-inner display-flex">
+                    <a href="/index/" class="tab-link link active">
+                        <i class="ri-home-5-line"></i>
+                        <span>Home</span>
+                    </a>
+                    <a href="/link2/" class="tab-link link">
+                        <i class="mdi mdi-magnify"></i>
+                        <span>Busca</span>
+                    </a>
+                    <a href="/link3/" class="tab-link link">
+                        <i class="ri-heart-2-line"></i>
+                        <span>Favoritos</span>
+                    </a>
+                    <a href="/link4/" class="tab-link link">
+                        <i class="ri-user-fill"></i>
+                        <span>Usuarios</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Initial Page, "data-name" contains page name -->
+            <div data-name="index" class="page color-theme-blue">
+
+                <!-- NAV topo -->
+                <div class="top-nav">
+                    <h1 class="title-logo"><span>SOFIA</span>Tech</h1>
+                    <a href="/carrinho/" class="btn-cart" data-count="0">
+                        <i class="ri-shopping-bag-line"></i>
+                    </a>
+                </div>
+
+                <form>
+                    <input placeholder="o que você procura?" type="text">
+                    <i class="icone-busca ri-search-2-line"></i>
+                </form>
+
+                <!-- Scrollable page content -->
+                <div class="page-content">
+                    <div class="block no-margin-top">
+                        <!-- Swiper -->
+                        <div class="swiper mySwiper">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <img class="img-fluid" src="img/propaganda.png">
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="img/propaganda2.png">
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="img/propaganda3.png">
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="img/propaganda4.png">
+                                </div>
+
+                            </div>
+                            <div class="swiper-pagination"></div>
+                        </div>
+
+                        <div class="display-flex align-items-center justify-content-space-between">
+                            <h2>Categorias</h2>
+                            <a href="#">veja-todas <i class="mdi mdi-arrow-right"></i></a>
+                        </div>
+
+                        <!-- Swiper para categorias -->
+                        <div class="categorias-container">
+                            <div class="categorias-titulo">Categorias</div>
+                            <div class="swiper categorias">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide"><button class="filter-btn active">Todas</button></div>
+                                    <div class="swiper-slide"><button class="filter-btn">Celulares</button></div>
+                                    <div class="swiper-slide"><button class="filter-btn">Laptop</button></div>
+                                    <div class="swiper-slide"><button class="filter-btn">Acessórios</button></div>
+                                    <div class="swiper-slide"><button class="filter-btn">TVs</button></div>
+                                    <div class="swiper-slide"><button class="filter-btn">VideoGame</button></div>
+                                </div>
+
+                                <div class="swiper-pagination"></div>
+                            </div>
+
+                            <div id="produtos" class="row">
+
+                                <!-- Skeleton Produto 1 -->
+  <div class="item-card">
+    <div class="item">
+      <div class="img-container skeleton-block skeleton-effect-wave" style="width: 100%; height: 120px;"></div>
+
+      <div class="nome-rating">
+        <span style="margin-right: auto; width: 90px; height: 14px;" class="skeleton-block color-gray"></span>
+        <span style="width: 20px; height: 14px; margin-right: 5px;" class="skeleton-block color-gray"></span>
+        <span style="width: 30px; height: 14px; margin-right: 15px;" class="skeleton-block color-gray"></span>
+      </div>
+
+      <div class="price bold">
+        <span style="width: 60px; height: 20px; margin-top: 5px;" class="skeleton-block color-gray"></span>
+      </div>
+
+      <div class="skeleton-block" style="width: 100px; height: 30px; margin-top: 10px;"></div>
+    </div>
+    <a href="/details/" class="button button-fill color-blue">Ver Detalhes</a>
+  </div>
+
+  <!-- Skeleton Produto 2 -->
+  <div class="item-card">
+    <div class="item">
+      <div class="img-container skeleton-block skeleton-effect-wave" style="width: 100%; height: 120px;"></div>
+
+      <div class="nome-rating">
+        <span style="margin-right: auto; width: 90px; height: 14px;" class="skeleton-block color-gray"></span>
+        <span style="width: 20px; height: 14px; margin-right: 5px;" class="skeleton-block color-gray"></span>
+        <span style="width: 30px; height: 14px; margin-right: 15px;" class="skeleton-block color-gray"></span>
+      </div>
+
+      <div class="price bold">
+        <span style="width: 60px; height: 20px; margin-top: 5px;" class="skeleton-block color-gray"></span>
+      </div>
+
+      <div class="skeleton-block" style="width: 100px; height: 30px; margin-top: 10px;"></div>
+    </div>
+    <a href="/details/" class="button button-fill color-blue">Ver Detalhes</a>
+  </div>
+
+  <!-- Skeleton Produto 3 -->
+  <div class="item-card">
+    <div class="item">
+      <div class="img-container skeleton-block skeleton-effect-wave" style="width: 100%; height: 120px;"></div>
+
+      <div class="nome-rating">
+        <span style="margin-right: auto; width: 90px; height: 14px;" class="skeleton-block color-gray"></span>
+        <span style="width: 20px; height: 14px; margin-right: 5px;" class="skeleton-block color-gray"></span>
+        <span style="width: 30px; height: 14px; margin-right: 15px;" class="skeleton-block color-gray"></span>
+      </div>
+
+      <div class="price bold">
+        <span style="width: 60px; height: 20px; margin-top: 5px;" class="skeleton-block color-gray"></span>
+      </div>
+
+      <div class="skeleton-block" style="width: 100px; height: 30px; margin-top: 10px;"></div>
+    </div>
+    <a href="/details/" class="button button-fill color-blue">Ver Detalhes</a>
+  </div>
+
+  <!-- Skeleton Produto 4 -->
+  <div class="item-card">
+    <div class="item">
+      <div class="img-container skeleton-block skeleton-effect-wave" style="width: 100%; height: 120px;"></div>
+
+      <div class="nome-rating">
+        <span style="margin-right: auto; width: 90px; height: 14px;" class="skeleton-block color-gray"></span>
+        <span style="width: 20px; height: 14px; margin-right: 5px;" class="skeleton-block color-gray"></span>
+        <span style="width: 30px; height: 14px; margin-right: 15px;" class="skeleton-block color-gray"></span>
+      </div>
+
+      <div class="price bold">
+        <span style="width: 60px; height: 20px; margin-top: 5px;" class="skeleton-block color-gray"></span>
+      </div>
+
+      <div class="skeleton-block" style="width: 100px; height: 30px; margin-top: 10px;"></div>
+    </div>
+    <a href="/details/" class="button button-fill color-blue">Ver Detalhes</a>
+  </div>
+
+</div>
+
+                                <!-- Produto 1 -->
+                                 
+                                                             
+
+                                
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    
+    <!-- Path to Framework7 Library Bundle JS-->
+    <script type="text/javascript" src="lib/framework7-bundle.min.js"></script>
+    <!-- jQuery -->
+    <script type="text/javascript" src="lib/jquery-3.7.0.min.js"></script>
+    <!-- Roteamento do app-->
+    <script type="text/javascript" src="js/routes.js"></script>
+    <script src="cordova.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+
+    
+
+</body>
+
+</html>

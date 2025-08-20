@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="theme-color" content="#2196f3" />
+  <title>Template Tab - Carrinho</title>
+
+  <!-- Framework7 CSS -->
+  <link rel="stylesheet" href="lib/framework7-bundle.min.css" />
+  <!-- Ícones -->
+  <link rel="stylesheet" href="css/materialdesignicons.min.css" />
+  <link rel="stylesheet" href="css/Remixicon.css" />
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
+
+  <!-- Estilos personalizados -->
+  <link rel="stylesheet" href="css/index.css" />
+  <link rel="stylesheet" href="css/details.css" />
+  <link rel="stylesheet" href="css/carrinho.css" /> <!-- Link para o novo cart.css -->
+</head>
+
+<body>
+  <div id="app">
+    <div class="view view-main">
+
+      
+      <!-- Página Carrinho -->
+      <div data-name="carrinho" class="page color-theme-blue">
+
+        <!-- Barra de navegação superior -->
+        <div class="nav-top cart">
+          <a href="/index/" class="link back">
+            <i class="ri-arrow-left-wide-line"></i>
+          </a>
+          <strong><i class="ri-shopping-cart-2-line"></i></strong> Carrinho
+          <a href="#" class="link popover-open" data-popover=".popover-menu" class="link"><i class="ri-more-fill"></i></a>
+
+        </div>
+        <div class="popover popover-menu">
+    <div class="popover-angle"></div>
+    <div class="popover-inner">
+      <div class="list">
+        <ul>
+          <li>
+            <a id="esvaziar" href="#" class="list-button popover-close">
+            <span class="mdi mdi-broom"></span>Esvaziar carrinho</a></li>
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+
+        <!-- Conteúdo da página -->
+        <div class="page-content">
+          <div id="listacarrinho">
+            <div class="item-carrinho">
+              <div class="area-img">
+                <img src="img/default.png" alt="Imagem do Produto">
+              </div>
+              <div class="area-details">
+                <div class="sup">
+                  <span class="name-prod"> Xbox Series X</span>
+                  <a class="delete-item" href="#">
+                    <i class="mdi mdi-close"></i>
+                  </a>
+                </div>
+                <div class="middle">
+                  <span>1 TB</span>
+                </div>
+                <div class="preco-quantidade">
+                  <span>$2999</span>
+                  <div class="count">
+                    <a class="minus" href="#">-</a>
+                    <input class="qtd-item" type="text" value="1">
+                    <a class="plus" href="#">+</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Você pode adicionar mais itens de carrinho aqui -->
+             <div class="item-carrinho">
+              <div class="area-img">
+                <img src="img/default.png" alt="Imagem do Produto">
+              </div>
+              <div class="area-details">
+                <div class="sup">
+                  <span class="name-prod"> Xbox Series X</span>
+                  <a class="delete-item" href="#">
+                    <i class="mdi mdi-close"></i>
+                  </a>
+                </div>
+                <div class="middle">
+                  <span>1 TB</span>
+                </div>
+                <div class="preco-quantidade">
+                  <span>$2999</span>
+                  <div class="count">
+                    <a class="minus" href="#">-</a>
+                    <input class="qtd-item" type="text" value="1">
+                    <a class="plus" href="#">+</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Toolbar de Totais -->
+        <div id="totais" class="toolbar table" style="margin-bottom: 3px;">
+  <div class="toolbar-inner display-flex justify-content-center">
+    <div class="w-80 display-flex justify-content-space-between">
+      <span>Sub-total:</span>
+      <span id="total-carrinho">R$ 0,00</span>
+    </div>
+    <div class="w-80 display-flex justify-content-space-between">
+      <span>Frete:</span>
+      <span>R$ 10,00</span>
+    </div>
+  </div>
+</div>
+
+
+        <!-- Toolbar Inferior para Comprar -->
+        <div class="toolbar toolbar-bottom carrinho-toolbar">
+          <div class="toolbar-inner">
+            <button class="add-cart">
+              Comprar
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="lib/framework7-bundle.min.js"></script>
+  <script src="lib/jquery-3.7.0.min.js"></script>
+  <script src="js/routes.js"></script>
+  <script src="cordova.js"></script>
+
+  <!-- Lógica para mostrar/esconder menu -->
+  <script>
+    // Inicializa o Framework7 após o carregamento completo da página
+    window.onload = function() {
+      var app = new Framework7();
+
+      app.on('pageInit', function (page) {
+        if (page.name === 'carrinho') {
+          $$('#menuPrincipal').hide();
+        }
+      });
+
+      app.on('pageBeforeOut', function (page) {
+        if (page.name === 'carrinho') { // Corrigido para 'carrinho' para consistência
+          $$('#menuPrincipal').show();
+        }
+      });
+    };
+  </script>
+  <script src="js/carrinho.js"></script>
+
+</body>
+
+</html>

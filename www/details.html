@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="theme-color" content="#2196f3" />
+  <title>Template Tab - Details</title>
+
+  <!-- Framework7 CSS -->
+  <link rel="stylesheet" href="lib/framework7-bundle.min.css" />
+  <!-- Ícones -->
+  <link rel="stylesheet" href="css/materialdesignicons.min.css" />
+  <link rel="stylesheet" href="css/Remixicon.css" />
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
+
+  <!-- Estilos personalizados -->
+  <link rel="stylesheet" href="css/index.css" />
+  <link rel="stylesheet" href="css/details.css" />
+</head>
+
+<body>
+  <div id="app">
+    <div class="view view-main">
+
+      <!-- Menu Principal -->
+      <div id="menuPrincipal" class="toolbar toolbar-bottom">
+        <div class="toolbar-inner display-flex">
+          <a href="/index/" class="tab-link link">
+            <i class="ri-home-5-line"></i>
+            <span>Home</span>
+          </a>
+          <a href="/link2/" class="tab-link link">
+            <i class="mdi mdi-magnify"></i>
+            <span>Busca</span>
+          </a>
+          <a href="/link3/" class="tab-link link">
+            <i class="ri-heart-2-line"></i>
+            <span>Favoritos</span>
+          </a>
+          <a href="/link4/" class="tab-link link">
+            <i class="ri-user-fill"></i>
+            <span>Usuarios</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Página Details -->
+      <div data-name="details" class="page color-theme-blue">
+
+        <!-- Conteúdo da página -->
+        <div class="page-content">
+          <div class="prod-detail">
+            <div class="buttons-top">
+              <a href="/index/" class="link back">
+                <i class="ri-arrow-left-wide-line"></i>
+              </a>
+              <a href="#"><i class="ri-heart-3-line"></i></a>
+              <a href="#"><i class="ri-share-2-line"></i></a>
+            </div>
+            <img id="imagem-details" src="img/default.png" />
+          </div>
+
+          <div class="prod-content">
+            <div class="block">
+              <div class="line padding-top">
+                <b id="nome-details" class=" margin-left"></b>
+                <button class="sale-btn">Promoção</button>
+              </div>
+              <div class="display-flex align-items-center justify-content-start">
+                <button class="btn-rates"><i class="mdi mdi-star"></i><span id="rating-details">4.8</span></button>
+                 <button class="btn-rates"><i class="ri-thumb-up-fill"></i><span id="like-details">90%</span></button>
+
+                <span id="reviews-details" class="reviews">110 reviews</span>
+              </div>
+              <div class="display-flex align-items-center justify-content-center">
+                <p id="descricao-details">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel nihil corporis amet sint! Voluptate rerum, provident officia non natus sequi doloremque.</p>
+              </div>
+              <table id="tabdetalhes">
+                <tr>
+                  <th>Características</th>
+                  <th>Detalhes</th>
+                </tr>
+                
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Toolbar do Carrinho -->
+<div class="toolbar toolbar-bottom carrinho-toolbar">
+  <div class="toolbar-inner display-flex justify-content-space-between align-items-center">
+    <div>
+      <span id="preco-detalhe" class="riscado color-gray">R$ 1400,00</span><br />
+      <h3 id="precopromo-detalhe" class="princing no-padding no-margin">R$ 1200</h3>
+    </div>
+    <button class="btn-adicionar-carrinho">
+      <i class="ri-shopping-cart-2-line"></i>
+      Adicionar ao Carrinho
+    </button>
+  </div>
+</div>
+
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="lib/framework7-bundle.min.js"></script>
+  <script src="lib/jquery-3.7.0.min.js"></script>
+  <script src="js/routes.js"></script>
+  <script src="cordova.js"></script>
+
+  <!-- Lógica para mostrar/esconder menu -->
+  <script>
+    var app = new Framework7();
+
+    app.on('pageInit', function (page) {
+      if (page.name === 'details') {
+        $$('#menuPrincipal').hide();
+      }
+    });
+
+    app.on('pageBeforeOut', function (page) {
+      if (page.name === 'details') {
+        $$('#menuPrincipal').show();
+      }
+    });
+  </script>
+</body>
+
+</html>

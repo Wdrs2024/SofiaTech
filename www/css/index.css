@@ -1,0 +1,280 @@
+:root {
+  --branco: #ffffff;
+  --gelo: #f1f1f1;
+  --verde: #19c463;
+  --preto: #2a2a2a;
+  --laranja: #FF6600;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+body {
+  font-family: "Bebas Neue", sans-serif;
+}
+
+.toolbar {
+  height: 80px;
+}
+
+.tab-link {
+  display: flex;
+  justify-content: center;
+  flex-flow: column wrap;
+}
+
+.toolbar-inner .link {
+  background: var(--branco);
+  border-top: 1px solid var(--gelo);
+  flex: 1;
+  height: 80px;
+  line-height: 25px;
+  font-weight: bold;
+  color: var(--verde);
+}
+
+.toolbar-inner .link:not(.active) {
+  color: var(--preto);
+  font-weight: normal;
+}
+
+.toolbar-inner > .link i {
+  font-size: 28px;
+}
+
+.top-nav {
+  width: 100%;
+  height: 60px;
+  background: var(--branco);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.title-logo {
+  font-weight: 600;
+  margin-left: 5%;
+}
+
+.title-logo span {
+  color: var(--verde);
+}
+
+.btn-cart {
+  width: 40px;
+  height: 40px;
+  background: var(--branco);
+  display: flex;
+  justify-content: center;
+  margin-right: 5%;
+  border-radius: 50%;
+  border: 1px solid var(--gelo);
+  font-size: 24px;
+  color: var(--preto);
+  position: relative;
+}
+
+.btn-cart::before {
+  content: attr(data-count);
+  background: var(--verde);
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  color: var(--branco);
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-right: 5%;
+}
+
+.btn-cart[data-count="0"]::before {
+  display: none;
+}
+
+a {
+  color: var(--verde);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+form {
+  padding-top: 10px;
+  background: var(--branco);
+  padding-bottom: 20px;
+  position: relative;
+}
+
+input[type="text"] {
+  width: 90%;
+  height: 45px;
+  border-radius: 10px;
+  margin: auto;
+  padding: 10px 20px;
+  background: var(--gelo);
+}
+
+::placeholder {
+  color: #b3afaf;
+}
+
+.icone-busca {
+  position: absolute;
+  top: 10px;
+  right: 5%;
+  font-size: 27px;
+  padding: 13px;
+}
+
+.page-content {
+  background: var(--branco);
+  padding-top: 10px;
+}
+
+.swiper {
+  width: 100%;
+  height: auto;
+  margin-bottom: 15px;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.block {
+  margin-left: 2%;
+  margin-right: 2%;
+}
+
+/* SWIPER DE CATEGORIAS */
+.swiper.categorias {
+  padding: 10px ;
+}
+
+.swiper.categorias .swiper-slide {
+  width: auto !important;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+}
+
+.filter-btn {
+  width: 100%;
+  height: 35px;
+  background: none;
+  border: 2px solid var(--preto);
+  border-radius: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  
+}
+
+.filter-btn.active {
+  background: var(--verde);
+  color: white;
+  border: none;
+}
+
+.row {
+  flex-wrap: wrap;
+  flex-direction: row;
+  display: flex;
+  padding: 10px;
+}
+
+.item {
+  color: var(--preto);
+}
+
+.produtos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 16px;
+  padding: 16px;
+}
+.item-card {
+  background-color: var(--branco);
+  border-radius: 12px;
+  padding: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  text-align: center;
+}
+
+.item-card:last-child {
+  margin-bottom: 120px; /* espaço extra só para o último */
+}
+
+.img-container img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  max-height: 120px;
+}
+
+.nome-rating {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 8px;
+  font-size: 14px;
+ 
+}
+.price {
+  color: var(--preto);
+  font-size: 16px;
+  margin: 8px 0;
+}
+
+.color-gray{
+  color: gray
+}
+
+.mdi-star{
+  color: #FF6600;
+}
+
+.acoes {
+  width: 100%;
+  text-align: center;
+}
+
+.btn.btn-primary {
+  background-color: var(--laranja);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: none;
+  font-size: 14px;
+}
+
+.categorias-container {
+  margin-bottom: 8px; /* menor espaço abaixo das categorias */
+}
+
+@media (max-width: 360px) {
+  .toolbar-inner .link i {
+    font-size: 20px;
+  }
+
+  .toolbar-inner .link {
+    font-size: 12px;
+    height: 70px;
+  }
+}
+

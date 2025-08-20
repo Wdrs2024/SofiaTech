@@ -1,0 +1,438 @@
+/* carrinho.css */
+
+/* Variáveis CSS */
+:root {
+  --branco: #fff;
+  --gelo: #f1f1f1;
+  --verde: #19c463;
+  --preto: #2a2a2a;
+}
+
+/* Estilos para o cabeçalho do carrinho (nav-top) */
+.nav-top.cart {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--branco);
+  padding: 10px 15px; /* Adicionado padding horizontal para melhor espaçamento */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Sombra suave para destacar */
+}
+
+.nav-top.cart a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px; /* Reduzido o tamanho para ícones */
+  height: 40px;
+  border: 1px solid var(--gelo);
+  border-radius: 50%;
+  color: var(--preto);
+  text-decoration: none; /* Remover sublinhado padrão */
+  font-size: 20px; /* Tamanho do ícone */
+  transition: background-color 0.3s ease;
+}
+
+.nav-top.cart a:hover {
+  background-color: var(--gelo);
+}
+
+/* Ajustes para o título do carrinho no nav-top */
+.nav-top.cart strong {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  color: var(--preto);
+  gap: 8px; /* Espaço entre o ícone e o texto */
+}
+
+/* Removido os margens fixas para melhor responsividade com space-between */
+.nav-top.cart a:first-child {
+  margin-right: auto; /* Empurra o resto para a direita */
+}
+
+.nav-top.cart a:last-child {
+  margin-left: auto; /* Empurra o resto para a esquerda */
+}
+
+/* Lista de itens do carrinho */
+#listacarrinho {
+  display: flex;
+  flex-direction: column; /* Usar column para empilhar itens */
+  gap: 15px; /* Espaçamento entre os itens */
+  margin-top: 20px;
+  padding: 0 15px 280px; /* Padding horizontal e inferior para espaço da toolbar */
+}
+
+.item-carrinho {
+  display: flex;
+  align-items: center;
+  width: 100%; /* Ocupa a largura total do contêiner */
+  min-height: 120px; /* Altura mínima para cada item */
+  background-color: var(--branco);
+  border-radius: 12px; /* Cantos arredondados */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); /* Sombra para destacar o item */
+  padding: 10px;
+}
+
+.area-img {
+  flex-shrink: 0; /* Não encolher a imagem */
+  width: 100px; /* Largura fixa para a área da imagem */
+  height: 100px; /* Altura fixa para a área da imagem */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--gelo);
+  border-radius: 10px; /* Cantos arredondados para a área da imagem */
+  overflow: hidden; /* Garante que a imagem não vaze */
+}
+
+.area-img img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.area-details {
+  flex-grow: 1; /* Permite que os detalhes ocupem o espaço restante */
+  display: flex;
+  justify-content: center;
+  flex-direction: column; /* Alinha os detalhes em coluna */
+  height: 100%;
+  padding-left: 15px;
+}
+
+.sup {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start; /* Alinha o topo dos elementos */
+  margin-bottom: 5px;
+}
+
+.name-prod {
+  font-weight: 600;
+  font-size: 18px; /* Ajuste o tamanho da fonte */
+  color: var(--preto);
+  flex-grow: 1; /* Permite que o nome do produto ocupe o espaço */
+  margin-right: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  /* Removido border: 1px solid var(--preto); - geralmente não é desejado em nomes de produto */
+}
+
+.delete-item {
+  font-size: 22px; /* Aumentado o tamanho do ícone de exclusão */
+  color: #9e9e9e;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.delete-item:hover {
+  color: #e53935; /* Vermelho ao passar o mouse */
+}
+
+.middle span {
+  color: gray;
+  font-size: 14px;
+  margin-bottom: 10px;
+  display: block; /* Garante que o span ocupe sua própria linha */
+}
+
+.preco-quantidade {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.preco-quantidade span {
+  font-size: 18px; /* Aumentado o tamanho da fonte do preço */
+  font-weight: 700; /* Mais negrito */
+  color: var(--preto);
+  flex-shrink: 0; /* Não permite que o preço encolha */
+}
+
+.count {
+  display: flex;
+  align-items: center;
+  gap: 5px; /* Espaçamento entre os botões e o input */
+}
+
+.minus,
+.plus {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px; /* Tamanho dos botões de quantidade */
+  height: 32px;
+  background: var(--gelo); /* Cor de fundo para os botões */
+  border: 1px solid var(--gelo); /* Corrigido de '1 px' para '1px' */
+  border-radius: 8px; /* Cantos arredondados */
+  font-size: 18px;
+  text-decoration: none;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.minus {
+  color: gray;
+}
+
+.plus {
+  color: var(--verde);
+  border-color: var(--verde); /* Borda verde para o botão de adicionar */
+}
+
+.minus:hover,
+.plus:hover {
+  background-color: #e0e0e0;
+}
+
+.qtd-item {
+  width: 40px; /* Largura do campo de quantidade */
+  text-align: center;
+  background: var(--branco) !important;
+  border: 1px solid var(--gelo); /* Borda para o input */
+  border-radius: 8px;
+  padding: 5px 0;
+  
+}
+
+/* Remove setas padrão em Chrome, Safari, Edge */
+.qtd-item::-webkit-outer-spin-button,
+.qtd-item::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Utilitários */
+.flex-100 {
+  flex: 1;
+  text-align: center;
+}
+
+.w-80 {
+  width: 80%;
+  padding: 8px 0px;
+}
+
+/* Toolbar de Totais */
+#totais {
+  background-color: var(--branco);
+  border-top: 1px solid var(--gelo);
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.05);
+  padding: 15px 20px; /* Aumentado o padding para melhor visualização */
+  position: fixed; /* Fixado na parte inferior */
+  bottom: 60px; /* Acima da toolbar de comprar */
+  left: 0;
+  right: 0;
+  z-index: 10; /* Garante que esteja acima de outros elementos */
+  flex-direction: column; /* Garante que os totais fiquem em coluna */
+}
+
+#totais .toolbar-inner {
+  display: flex;
+  flex-direction: column; /* Garante que os spans fiquem em coluna */
+  align-items: center;
+  width: 100%;
+}
+
+#totais .w-80 {
+  width: 100%; /* Ocupa a largura total dentro do toolbar-inner */
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 0;
+  font-size: 16px;
+  color: var(--preto);
+}
+
+#totais .w-80 span:first-child {
+  font-weight: normal;
+}
+
+#totais .w-80 span:last-child {
+  font-weight: 600;
+}
+
+/* Toolbar Inferior para Comprar */
+.carrinho-toolbar {
+  background-color: #2196f3; /* Cor de tema azul */
+  color: #fff;
+  height: 60px;
+  padding: 0 20px;
+  box-shadow: 0 -3px 8px rgba(0, 0, 0, 0.15);
+  position: fixed; /* Fixado na parte inferior */
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 11; /* Acima da toolbar de totais */
+}
+
+.carrinho-toolbar .toolbar-inner {
+  display: flex;
+  justify-content: center; /* Centraliza o botão */
+  align-items: center;
+  height: 100%;
+}
+
+.add-cart {
+  width: 100%; /* Ocupa a largura total da toolbar-inner */
+  max-width: 300px; /* Limita a largura máxima para botões maiores em telas grandes */
+  background-color: #FF6600; /* Laranja vibrante para o botão de compra */
+  color: #fff;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 30px; /* Cantos bem arredondados */
+  font-size: 18px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para o botão */
+}
+
+.add-cart:hover {
+  background-color: #e65c00; /* Laranja mais escuro ao passar o mouse */
+  transform: translateY(-2px); /* Efeito de "levantar" */
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .nav-top.cart a {
+    width: 35px;
+    height: 35px;
+    font-size: 18px;
+  }
+
+  .nav-top.cart strong {
+    font-size: 16px;
+  }
+
+  .item-carrinho {
+    padding: 8px;
+  }
+
+  .area-img {
+    width: 80px;
+    height: 80px;
+  }
+
+  .name-prod {
+    font-size: 16px;
+  }
+
+  .delete-item {
+    font-size: 20px;
+  }
+
+  .middle span {
+    font-size: 13px;
+  }
+
+  .preco-quantidade span {
+    font-size: 16px;
+  }
+
+  .minus,
+  .plus {
+    width: 28px;
+    height: 28px;
+    font-size: 16px;
+  }
+
+  .qtd-item {
+    width: 35px;
+    font-size: 14px;
+  }
+
+  #totais {
+    padding: 10px 15px;
+    font-size: 14px;
+  }
+
+  .add-cart {
+    padding: 10px 20px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-top.cart {
+    padding: 10px;
+  }
+
+  .nav-top.cart a:first-child,
+  .nav-top.cart a:last-child {
+    margin: 0; /* Remove margens extras em telas muito pequenas */
+  }
+
+  #listacarrinho {
+    padding: 0 10px 280px;
+  }
+
+  .item-carrinho {
+    flex-direction: column; /* Empilha os elementos em telas muito pequenas */
+    align-items: flex-start;
+    height: auto; /* Altura automática para se ajustar ao conteúdo empilhado */
+    padding-bottom: 15px; /* Espaçamento inferior quando empilhado */
+  }
+
+  .area-img {
+    width: 100%;
+    height: 150px; /* Aumenta a altura da imagem quando empilhada */
+    margin-bottom: 10px;
+  }
+
+  .area-details {
+    padding-left: 0;
+    width: 100%;
+  }
+
+  .sup {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .name-prod {
+    margin-left: 0;
+    margin-bottom: 5px;
+    max-width: 100%; /* Ocupa a largura total */
+  }
+
+  .delete-item {
+    position: absolute; /* Posiciona o botão de exclusão no canto superior direito */
+    top: 10px;
+    right: 10px;
+  }
+
+  .middle span {
+    margin-left: 0;
+  }
+
+  .preco-quantidade {
+    flex-direction: column; /* Empilha preço e quantidade */
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .preco-quantidade span {
+    margin-left: 0;
+  }
+
+  .count {
+    justify-content: flex-start; /* Alinha os botões de quantidade à esquerda */
+  }
+
+  #totais {
+    padding: 8px 10px;
+  }
+
+  .add-cart {
+    padding: 10px 15px;
+    font-size: 15px;
+  }
+}
