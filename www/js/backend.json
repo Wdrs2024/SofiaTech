@@ -2,7 +2,7 @@
     {
         "id": 1,
         "imagem": "img/airpod.png",
-        "nome": "Airpod",
+        "nome": "Airpod Pro 2nd",
         "principal_caracteristica": "Branco",
         "rating": 4.5,
         "likes": "91%",
@@ -42,8 +42,8 @@
                 "detalhes": "Resistente a respingos e suor, ideal para uso durante exercícios físicos"
             }
         ],
-        "preco": 239.99,
-        "preco_promocional": 229.99
+        "preco": 1239.99,
+        "preco_promocional": 1229.99
     },
     {
         "id": 2,

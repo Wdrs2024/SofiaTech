@@ -1,67 +1,70 @@
 // Inicialização do Framework7 (fora do deviceready, pois app não depende do dispositivo)
 var app = new Framework7({
-  // App root element
   el: '#app',
-  // Nome do app
   name: 'My App',
-  // ID do app
   id: 'com.myapp.test',
-  // Painel lateral com swipe habilitado
   panel: {
     swipe: true,
   },
-  // Textos padrão do diálogo
   dialog: {
     buttonOk: 'Sim',
     buttonCancel: 'Cancelar',
   },
-  // Rotas
   routes: [
     {
       path: '/index/',
       url: 'index.html',
       animate: false,
       on: {
-        pageBeforeIn: function (event, page) {
-          // Mostra menu principal na home
+        pageBeforeIn: function () {
           $("#menuPrincipal").show("fast");
         },
-        pageInit: function (event, page) {
-          // Carrega script da página
-          $.getScript('js/index.js');
+        pageInit: function () {
+          // Carrega script da página apenas uma vez
+          if (!window.indexScriptLoaded) {
+            $.getScript('js/index.js', function () {
+              window.indexScriptLoaded = true;
+            });
+          }
 
-          // Inicializa Swiper principal com autoplay configurado corretamente
-          var swiper = new Swiper(".mySwiper", {
-            slidesPerView: 1,
-            spaceBetween: 30,
-            autoplay: {
-              delay: 3000,
-              disableOnInteraction: false,
-            },
-            loop: true,
-            breakpoints: {
-              50: { slidesPerView: 1, spaceBetween: 30 },
-              640: { slidesPerView: 2, spaceBetween: 30 },
-              992: { slidesPerView: 3, spaceBetween: 30 },
-              1200: { slidesPerView: 4, spaceBetween: 30 },
-            },
-          });
+          // Swiper principal
+          if (!document.querySelector('.mySwiper')?.classList.contains('swiper-initialized')) {
+            new Swiper(".mySwiper", {
+              slidesPerView: 1,
+              spaceBetween: 30,
+              autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+              },
+              loop: true,
+              breakpoints: {
+                50: { slidesPerView: 1, spaceBetween: 30 },
+                640: { slidesPerView: 2, spaceBetween: 30 },
+                992: { slidesPerView: 3, spaceBetween: 30 },
+                1200: { slidesPerView: 4, spaceBetween: 30 },
+              },
+            });
+          }
 
-          var swiper2 = new Swiper(".categorias", {
-            slidesPerView: 3,
-            spaceBetween: 10,
-            freeMode: true,
-            breakpoints: {
-              50: { slidesPerView: 3, spaceBetween: 10 },
-              640: { slidesPerView: 6, spaceBetween: 10 },
-              992: { slidesPerView: 8, spaceBetween: 10 },
-              1200: { slidesPerView: 12, spaceBetween: 10 },
-            },
-          });
+          // Swiper categorias
+          if (!document.querySelector('.categorias')?.classList.contains('swiper-initialized')) {
+            new Swiper(".categorias", {
+              slidesPerView: 3,
+              spaceBetween: 10,
+              freeMode: true,
+              breakpoints: {
+                50: { slidesPerView: 3, spaceBetween: 10 },
+                640: { slidesPerView: 6, spaceBetween: 10 },
+                992: { slidesPerView: 8, spaceBetween: 10 },
+                1200: { slidesPerView: 12, spaceBetween: 10 },
+              },
+            });
+          }
 
-          // Se houver swiper de produtos nesta página, inicialize aqui também (exemplo)
-          if(document.querySelector('.mySwiperProdutos')){
-            var swiperProdutos = new Swiper(".mySwiperProdutos", {
+          // Swiper produtos (condicional)
+          const produtosEl = document.querySelector('.mySwiperProdutos');
+          if (produtosEl && !produtosEl.classList.contains('swiper-initialized')) {
+            new Swiper(".mySwiperProdutos", {
               slidesPerView: 2,
               spaceBetween: 12,
               freeMode: true,
@@ -97,12 +100,15 @@ var app = new Framework7({
       url: 'details.html',
       animate: false,
       on: {
-        pageBeforeIn: function (event, page) {
-          // Esconde menu principal na página de detalhes
+        pageBeforeIn: function () {
           $("#menuPrincipal").hide("fast");
         },
-        pageInit: function (event, page) {
-          $.getScript('js/details.js');
+        pageInit: function () {
+          if (!window.detailsScriptLoaded) {
+            $.getScript('js/details.js', function () {
+              window.detailsScriptLoaded = true;
+            });
+          }
         },
       },
     },
@@ -113,32 +119,42 @@ var app = new Framework7({
         transition: 'f7-push',
       },
       on: {
-        pageBeforeIn: function (event, page) {
+        pageBeforeIn: function () {
           $("#menuPrincipal").hide("fast");
         },
+        
+        
+        pageInit: function (event, page) {
+         console.log('Entrou em Carrinho via pageInit', page);
+         if (!window.carrinhoScriptLoaded) {
+         $.getScript('js/carrinho.js', function () {
+         window.carrinhoScriptLoaded = true;
+       });
+  }
+}
+
+
+       
       },
     },
   ],
 });
 
-// Cria a view principal e define URL inicial
+// Cria a view principal
 var mainView = app.views.create('.view-main', { url: '/index/' });
 
-// Atualiza o estado ativo do menu de abas quando a rota muda
+// Atualiza abas ativas ao trocar de rota
 app.on('routeChange', function (route) {
-  var currentRoute = route.url;
-  document.querySelectorAll('.tab-link').forEach(function (el) {
-    el.classList.remove('active');
-  });
-  var targetEl = document.querySelector('.tab-link[href="' + currentRoute + '"]');
-  if (targetEl) {
-    targetEl.classList.add('active');
+  const currentRoute = route.url;
+  document.querySelectorAll('.tab-link').forEach(el => el.classList.remove('active'));
+  const activeEl = document.querySelector('.tab-link[href="' + currentRoute + '"]');
+  if (activeEl) {
+    activeEl.classList.add('active');
   }
 });
 
-// Função chamada quando o dispositivo está pronto (Cordova/PhoneGap)
+// Cordova: Função quando o dispositivo está pronto
 function onDeviceReady() {
-  // Captura botão voltar do Android
   document.addEventListener("backbutton", function (e) {
     if (mainView.router.currentRoute.path === '/index/') {
       e.preventDefault();
@@ -152,5 +168,5 @@ function onDeviceReady() {
   }, false);
 }
 
-// Adiciona listener para o deviceready
+// Listener para o evento 'deviceready'
 document.addEventListener('deviceready', onDeviceReady, false);

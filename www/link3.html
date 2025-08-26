@@ -1,59 +1,167 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="pt-BR">
 <head>
-    <!-- Required meta tags-->
+    <!-- Configurações básicas da página -->
     <meta charset="utf-8">
-    <meta name="viewport"
-        content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <!-- Color theme for statusbar (Android only) -->
     <meta name="theme-color" content="#2196f3">
-    <!-- Your app title -->
-    <title>My App</title>
-    <!-- Path to Framework7 Library Bundle CSS -->
-    <link rel="stylesheet" href="lib/framework7-bundle.min.css">
-    <!-- CSS PERSONALIZADO PARA MENU-->
-    <link rel="stylesheet" href="css/personalizado.css">
-    <!--Ícones Material Design-->
+    <title>SofiaTech - Favoritos</title>
+
+    <!-- Links para bibliotecas de estilo e ícones -->
+    <link rel="stylesheet" href="lib/framework7-bundle.min.css" />
+    <link rel="stylesheet" href="css/Remixicon/remixicon.css">
     <link rel="stylesheet" href="css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/personalizado.css">
 
+    <!-- Estilos personalizados para a página de favoritos -->
+    <style>
+        .product-card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
 
+        .product-card img {
+            max-height: 200px;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .product-card-body {
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+        
+        .product-card-body h5 {
+            font-size: 16px;
+            font-weight: bold;
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .product-card-body p {
+            font-weight: bold;
+            color: #28a745;
+            margin-bottom: 12px;
+        }
+        
+        .btn-sm {
+            font-size: 12px;
+            height: 32px;
+        }
+
+        .btn-outline-danger {
+            border: 1px solid #dc3545;
+            color: #dc3545;
+        }
+
+        .btn-outline-danger:hover {
+            background-color: #dc3545;
+            color: #fff;
+        }
+
+        .mt-auto {
+            margin-top: auto;
+        }
+    </style>
 </head>
 
 <body>
-    <!-- App root element -->
+    <!-- Elemento raiz do aplicativo -->
     <div id="app">
-
-        <!-- Your main view, should have "view-main" class -->
+        <!-- Main view. Deve ter a classe "view-main" -->
         <div class="view view-main">
-            <!-- Initial Page, "data-name" contains page name -->
-            <div data-name="link3" class="page">
 
-                <!-- Top Navbar -->
+            <!-- Página dos Favoritos, com nome "favoritos" -->
+            <div data-name="favoritos" class="page">
+                <!-- Barra de navegação superior da página -->
                 <div class="navbar">
                     <div class="navbar-bg"></div>
-                    <div class="navbar-inner justify-content-center">
-                        <div class="title ">Link 3</div>
+                    <div class="navbar-inner">
+                        <div class="title">❤️ Meus Favoritos</div>
+                        <a href="/carrinho/" class="link external">
+                            🛒 Carrinho
+                        </a>
                     </div>
                 </div>
 
-                <!-- Scrollable page content -->
+                <!-- Conteúdo rolável da página -->
                 <div class="page-content">
                     <div class="block">
-                        Conteúdo do link 3
+                        <div class="row no-gap">
+
+                            <!-- Produto Favorito 1 -->
+                            <div class="col-50 tablet-25">
+                                <div class="product-card">
+                                    <img src="img/produto2.jpg" alt="Produto 2">
+                                    <div class="product-card-body">
+                                        <h5>Produto 2</h5>
+                                        <p>R$ 149,90</p>
+                                        <a href="/details/" class="button button-fill button-sm mb-2">Ver Detalhes</a>
+                                        <button class="button button-outline btn-outline-danger btn-sm mt-auto">Remover</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Produto Favorito 2 -->
+                            <div class="col-50 tablet-25">
+                                <div class="product-card">
+                                    <img src="img/produto3.jpg" alt="Produto 3">
+                                    <div class="product-card-body">
+                                        <h5>Produto 3</h5>
+                                        <p>R$ 59,90</p>
+                                        <a href="/details/" class="button button-fill button-sm mb-2">Ver Detalhes</a>
+                                        <button class="button button-outline btn-outline-danger btn-sm mt-auto">Remover</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Você pode adicionar mais itens de favoritos aqui -->
+                            
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+
+        <!-- Barra de Abas Inferior -->
+        <div class="toolbar toolbar-bottom tabbar">
+            <div class="toolbar-inner">
+                <a href="/index/" class="link">
+                    <i class="ri-home-5-line"></i><span>Home</span>
+                </a>
+                <a href="/favoritos/" class="link tab-link-active">
+                    <i class="ri-heart-3-line"></i><span>Favoritos</span>
+                </a>
+                <a href="/carrinho/" class="link">
+                    <i class="ri-shopping-cart-2-line"></i><span>Carrinho</span>
+                </a>
+                <a href="/pedidos/" class="link">
+                    <i class="ri-file-list-3-line"></i><span>Pedidos</span>
+                </a>
+                <a href="/perfil/" class="link">
+                    <i class="ri-user-3-line"></i><span>Perfil</span>
+                </a>
+            </div>
+        </div>
+
     </div>
-    <!-- Path to Framework7 Library Bundle JS-->
+    <!-- Fim do elemento raiz do aplicativo -->
+
+    <!-- Scripts -->
     <script type="text/javascript" src="lib/framework7-bundle.min.js"></script>
-	<!-- jQuery -->
-	<script type="text/javascript" src="lib/jquery-3.7.0.min.js"></script>	
-    <!-- Roteamento do app-->
+    <script type="text/javascript" src="lib/jquery-3.7.0.min.js"></script>
     <script type="text/javascript" src="js/routes.js"></script>
     <script src="cordova.js"></script>
+    <script src="js/app.js"></script>
+    
 </body>
-
 </html>

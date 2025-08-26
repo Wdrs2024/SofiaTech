@@ -1,19 +1,23 @@
+// Carregar produtos do backend.json
 fetch('js/backend.json')
-  .then(response => response.json())
-  .then(data => {
-    // Salvar os dados do backend localmente
+  .then(function(response) {
+    return response.json();
+  })
+  .then(function(data) {
+    // Salvar dados no localStorage
     localStorage.setItem('produtos', JSON.stringify(data));
-    console.log('Dados dos produtos salvos no localStorage');
+    console.log('Produtos salvos no localStorage');
 
-    // Esvaziar a área de produtos
+    // Limpar área de produtos
     $("#produtos").empty();
 
-    data.forEach(produto => {
+    // Renderizar cada produto
+    data.forEach(function(produto) {
       var produtoHTML = `
         <div class="item-card">
           <div class="item">
             <div class="img-container">
-              <img src="${produto.imagem}" />
+              <img src="${produto.imagem}" alt="${produto.nome}" />
             </div>
             <div class="nome-rating">
               <span class="color-gray">${produto.nome}</span>
@@ -22,17 +26,17 @@ fetch('js/backend.json')
               </span>
             </div>
             <div class="price bold">
-              ${produto.preco_promocional.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
+              ${(produto.preco_promocional || produto.preco).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
+
             </div>
             <a data-id="${produto.id}" href="#" class="button button-fill color-blue ver-detalhes">Ver Detalhes</a>
           </div>
         </div>
       `;
-
       $("#produtos").append(produtoHTML);
     });
 
-    // Evento de clique nos botões "Ver Detalhes"
+    // Clique no botão "Ver Detalhes"
     $(document).on('click', '.ver-detalhes', function (e) {
       e.preventDefault();
       var id = $(this).data('id');
@@ -40,5 +44,16 @@ fetch('js/backend.json')
       app.views.main.router.navigate('/details/');
     });
 
+    // Atualizar contador do carrinho
+    atualizarCarrinho();
   })
-  .catch(error => console.error('Erro ao fazer fetch dos dados: ' + error));
+  .catch(function(error) {
+    console.error('Erro ao carregar backend.json: ' + error);
+  });
+
+// Atualizar contador de itens no carrinho
+function atualizarCarrinho() {
+  var carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+  var totalItens = carrinho.reduce((acc, item) => acc + item.quantidade, 0);
+  $('.btn-cart').attr('data-count', totalItens);
+}

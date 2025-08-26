@@ -1,65 +1,120 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="pt-BR">
 <head>
-    <!-- Required meta tags-->
+    <!-- Configurações básicas da página -->
     <meta charset="utf-8">
-    <meta name="viewport"
-        content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <!-- Color theme for statusbar (Android only) -->
     <meta name="theme-color" content="#2196f3">
-    <!-- Your app title -->
-    <title>My App</title>
-    <!-- Path to Framework7 Library Bundle CSS -->
-    <link rel="stylesheet" href="lib/framework7-bundle.min.css">
-    <!-- CSS PERSONALIZADO PARA MENU-->
-    <link rel="stylesheet" href="css/personalizado.css">
-    <!--Ícones Material Design-->
+    <title>SofiaTech - Meus Pedidos</title>
+
+    <!-- Links para bibliotecas de estilo e ícones -->
+    <link rel="stylesheet" href="lib/framework7-bundle.min.css" />
+    <link rel="stylesheet" href="css/Remixicon/remixicon.css">
     <link rel="stylesheet" href="css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/personalizado.css" />
 
-
+    <!-- Estilos personalizados para a página de pedidos -->
+    <style>
+        .order-card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 16px;
+            padding: 16px;
+        }
+        .status-entregue {
+            color: green;
+            font-weight: bold;
+        }
+        .status-andamento {
+            color: orange;
+            font-weight: bold;
+        }
+    </style>
 </head>
 
 <body>
-
-    
-    <!-- App root element -->
+    <!-- Elemento raiz do aplicativo -->
     <div id="app">
-
-        <!-- Your main view, should have "view-main" class -->
+        <!-- Main view. Deve ter a classe "view-main" -->
         <div class="view view-main">
-            <!-- Initial Page, "data-name" contains page name -->
-            <div data-name="link2" class="page">
 
-                <!-- Top Navbar -->
+            <!-- Página dos Pedidos, com nome "pedidos" -->
+            <div data-name="pedidos" class="page">
+                <!-- Barra de navegação superior da página -->
                 <div class="navbar">
                     <div class="navbar-bg"></div>
-                    <div class="navbar-inner justify-content-center">
-                        <div class="title ">Busca</div>
+                    <div class="navbar-inner">
+                        <div class="title">📦 Meus Pedidos</div>
+                        <a href="/carrinho/" class="link external">
+                            🛒 Carrinho
+                        </a>
                     </div>
                 </div>
 
-                
-
-                <!-- Scrollable page content -->
+                <!-- Conteúdo rolável da página -->
                 <div class="page-content">
                     <div class="block">
-                        Conteúdo do Busca
+                        <!-- Pedido 1 -->
+                        <div class="order-card">
+                            <div class="card-content">
+                                <h5>Pedido #12345</h5>
+                                <p class="text-small margin-bottom-half">Data: 10/08/2025</p>
+                                <p class="text-small margin-bottom-half">Total: <span class="status-entregue">R$ 249,80</span></p>
+                                <p class="text-small">Status: <span class="status-entregue">Entregue</span></p>
+                                <a href="#" class="button button-fill button-sm margin-top">Ver Detalhes</a>
+                            </div>
+                        </div>
 
-                      
+                        <!-- Pedido 2 -->
+                        <div class="order-card">
+                            <div class="card-content">
+                                <h5>Pedido #12346</h5>
+                                <p class="text-small margin-bottom-half">Data: 18/08/2025</p>
+                                <p class="text-small margin-bottom-half">Total: <span class="status-andamento">R$ 99,90</span></p>
+                                <p class="text-small">Status: <span class="status-andamento">Em andamento</span></p>
+                                <a href="#" class="button button-fill button-sm margin-top">Ver Detalhes</a>
+                            </div>
+                        </div>
+
+                        <!-- Você pode adicionar mais cards de pedido aqui -->
                     </div>
                 </div>
             </div>
         </div>
+
+        <!-- Barra de Abas Inferior -->
+        <div class="toolbar toolbar-bottom tabbar">
+            <div class="toolbar-inner">
+                <a href="/index/" class="link">
+                    <i class="ri-home-5-line"></i><span>Home</span>
+                </a>
+                <a href="/favoritos/" class="link">
+                    <i class="ri-heart-3-line"></i><span>Favoritos</span>
+                </a>
+                <a href="/carrinho/" class="link">
+                    <i class="ri-shopping-cart-2-line"></i><span>Carrinho</span>
+                </a>
+                <a href="/pedidos/" class="link tab-link-active">
+                    <i class="ri-file-list-3-line"></i><span>Pedidos</span>
+                </a>
+                <a href="/perfil/" class="link">
+                    <i class="ri-user-3-line"></i><span>Perfil</span>
+                </a>
+            </div>
+        </div>
+
     </div>
-    <!-- Path to Framework7 Library Bundle JS-->
+    <!-- Fim do elemento raiz do aplicativo -->
+
+    <!-- Scripts -->
     <script type="text/javascript" src="lib/framework7-bundle.min.js"></script>
-	<!-- jQuery -->
-	<script type="text/javascript" src="lib/jquery-3.7.0.min.js"></script>	
-    <!-- Roteamento do app-->
+    <script type="text/javascript" src="lib/jquery-3.7.0.min.js"></script>
     <script type="text/javascript" src="js/routes.js"></script>
     <script src="cordova.js"></script>
-</body>
+    <script src="js/app.js"></script>
 
+</body>
 </html>

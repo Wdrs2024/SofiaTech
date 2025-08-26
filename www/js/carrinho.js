@@ -1,78 +1,132 @@
-// Inicializa o Framework7 (crie aqui para usar app.dialog)
-var app = new Framework7();
+// Recupera carrinho do localStorage
+var carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
 
-let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
-
-function carregarCarrinho() {
-  const listaCarrinho = $('#listacarrinho'); // Use id correto do seu HTML
-  const totalCarrinho = $('#total-carrinho'); // Certifique que exista no HTML
-  listaCarrinho.html('');
-
-  let total = 0;
-
-  if (carrinho.length === 0) {
-    listaCarrinho.html('<p>Seu carrinho está vazio.</p>');
-    totalCarrinho.text('R$ 0,00');
-    return;
+// Inicializa a página
+$(document).ready(function () {
+  if (carrinho.length > 0) {
+    renderizarCarrinho();
+  } else {
+    carrinhoVazio();
   }
+});
+
+// Renderiza produtos no carrinho
+function renderizarCarrinho() {
+  $("#listacarrinho").empty();
 
   carrinho.forEach((item, index) => {
-    total += item.preco * item.quantidade;
-
-    listaCarrinho.append(`
-      <div class="block">
-        <div class="row">
-          <div class="col-40"><img src="${item.img}" style="width: 80px;" /></div>
-          <div class="col-60">
-            <div>${item.nome}</div>
-            <div>Quantidade: ${item.quantidade}</div>
-            <div>Preço unitário: R$ ${item.preco.toFixed(2).replace('.', ',')}</div>
-            <button class="button button-small color-red botao-remover" data-index="${index}">Remover</button>
+    let itemHtml = `
+      <div class="item-carrinho" data-index="${index}">
+        <div class="area-img">
+          <img src="${item.img}" alt="Imagem do Produto">
+        </div>
+        <div class="area-details">
+          <div class="sup">
+            <span class="name-prod">${item.nome}</span>
+            <a class="delete-item" href="#" data-index="${index}">
+              <i class="mdi mdi-close"></i>
+            </a>
+          </div>
+          <div class="middle">
+            <span>${item.principal_caracteristica || ''}</span>
+          </div>
+          <div class="preco-quantidade">
+            <span>${(item.preco || 0).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</span>
+            <div class="count">
+              <a class="minus" href="#" data-index="${index}">-</a>
+              <input class="qtd-item" type="text" value="${item.quantidade}" readonly>
+              <a class="plus" href="#" data-index="${index}">+</a>
+            </div>
           </div>
         </div>
       </div>
-    `);
+    `;
+    $("#listacarrinho").append(itemHtml);
   });
 
-  totalCarrinho.text(`R$ ${total.toFixed(2).replace('.', ',')}`);
+  $("#totais, #pay").removeClass('display-none');
+  atualizarTotais();
 }
 
-// Delegação para remover item (fora de carregarCarrinho para não ficar repetindo)
-$(document).on('click', '.botao-remover', function () {
-  const idx = $(this).data('index');
-  carrinho.splice(idx, 1);
+// Mostra carrinho vazio
+function carrinhoVazio() {
+  $("#listacarrinho").html(`
+    <div class="text-align-center">
+      <img width="300" src="img/empty.gif">
+      <br><span>Nada por enquanto...</span>
+    </div>
+  `);
+  $("#totais, #pay").addClass('display-none');
+}
+
+// Atualiza totais
+function atualizarTotais() {
+  let subtotal = 0;
+  carrinho.forEach(item => subtotal += (item.preco || 0) * (item.quantidade || 1));
+
+  let frete = carrinho.length > 0 ? 10 : 0; // Frete fixo
+  let total = subtotal + frete;
+
+  $("#subtotal-carrinho").text(subtotal.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }));
+  $("#frete-carrinho").text(frete.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }));
+  $("#total-carrinho").text(total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }));
+}
+
+// Salva carrinho
+function salvarCarrinho() {
   localStorage.setItem('carrinho', JSON.stringify(carrinho));
-  carregarCarrinho();
+}
+
+// Esvaziar carrinho
+$("#esvaziar").on('click', function () {
+  app.dialog.confirm('Tem certeza que deseja esvaziar o carrinho?', 'Esvaziar Carrinho', function () {
+    carrinho = [];
+    salvarCarrinho();
+    carrinhoVazio();
+  });
 });
 
-// Botão finalizar compra (verifique o seletor correto no HTML, no seu caso é .add-cart)
-$(document).on('click', '.add-cart', function () {
+// Remover item
+$(document).on('click', '.delete-item', function () {
+  let index = $(this).data('index');
+  app.dialog.confirm('Remover este item?', 'Excluir Item', function () {
+    carrinho.splice(index, 1);
+    salvarCarrinho();
+    carrinho.length > 0 ? renderizarCarrinho() : carrinhoVazio();
+  });
+});
+
+// Diminuir quantidade
+$(document).on('click', '.minus', function () {
+  let index = $(this).data('index');
+  if (carrinho[index].quantidade > 1) {
+    carrinho[index].quantidade--;
+  } else {
+    carrinho.splice(index, 1);
+  }
+  salvarCarrinho();
+  carrinho.length > 0 ? renderizarCarrinho() : carrinhoVazio();
+});
+
+// Aumentar quantidade
+$(document).on('click', '.plus', function () {
+  let index = $(this).data('index');
+  carrinho[index].quantidade++;
+  salvarCarrinho();
+  renderizarCarrinho();
+});
+
+// Finalizar compra
+$("#btn-finalizar").on('click', function () {
   if (carrinho.length === 0) {
-    app.dialog.alert('Seu carrinho está vazio!');
+    app.dialog.alert('Seu carrinho está vazio!', 'Erro');
     return;
   }
-  app.dialog.alert('Compra finalizada com sucesso!');
-  carrinho = [];
-  localStorage.setItem('carrinho', JSON.stringify(carrinho));
-  carregarCarrinho();
-});
 
-// Função para adicionar ao carrinho, atualizando variável global
-function adicionarAoCarrinho(nome, preco, img) {
-  let encontrado = carrinho.find(item => item.nome === nome);
-
-  if (encontrado) {
-    encontrado.quantidade++;
-  } else {
-    carrinho.push({ nome: nome, preco: preco, img: img, quantidade: 1 });
-  }
-
-  localStorage.setItem('carrinho', JSON.stringify(carrinho));
-  app.dialog.alert('Produto adicionado ao carrinho!');
-  carregarCarrinho(); // Atualiza a tela imediatamente
-}
-
-// Carrega o carrinho assim que o documento estiver pronto
-$(document).ready(function () {
-  carregarCarrinho();
+  app.dialog.confirm('Deseja finalizar a compra?', 'Finalizar Compra', function () {
+    app.dialog.alert('✅ Compra finalizada com sucesso!', 'Obrigado');
+    carrinho = [];
+    salvarCarrinho();
+    carrinhoVazio();
+  });
 });

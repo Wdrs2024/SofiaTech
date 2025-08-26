@@ -10,7 +10,7 @@
     <!-- Color theme for statusbar (Android only) -->
     <meta name="theme-color" content="#2196f3">
     <!-- Your app title -->
-    <title>Template Tab</title>
+    <title>SOFIATECH</title>
     <!-- Path to Framework7 Library Bundle CSS -->
     <link rel="stylesheet" href="lib/framework7-bundle.min.css">
     <!-- CSS PERSONALIZADO PARA MENU-->
@@ -19,8 +19,7 @@
     <link rel="stylesheet" href="css/carrinho.css">
     <!--Ícones Material Design-->
     <link rel="stylesheet" href="css/materialdesignicons.min.css">
-    <!--Ícones Remix Icon-->
-    <link rel="stylesheet" href="css/Remixicon.css">
+    <!--Ícones Remix Icon (via CDN, sem caminho local duplicado)-->
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
 </head>
 
@@ -65,7 +64,7 @@
                 </div>
 
                 <form>
-                    <input placeholder="o que você procura?" type="text">
+                    <input id="search" placeholder="o que você procura?" type="text">
                     <i class="icone-busca ri-search-2-line"></i>
                 </form>
 
@@ -116,95 +115,74 @@
                             <div id="produtos" class="row">
 
                                 <!-- Skeleton Produto 1 -->
-  <div class="item-card">
-    <div class="item">
-      <div class="img-container skeleton-block skeleton-effect-wave" style="width: 100%; height: 120px;"></div>
+                                <div class="item-card">
+                                    <div class="item">
+                                        <div class="img-container skeleton-block skeleton-effect-wave" style="width: 100%; height: 120px;"></div>
+                                        <div class="nome-rating">
+                                            <span style="margin-right: auto; width: 90px; height: 14px;" class="skeleton-block color-gray"></span>
+                                            <span style="width: 20px; height: 14px; margin-right: 5px;" class="skeleton-block color-gray"></span>
+                                            <span style="width: 30px; height: 14px; margin-right: 15px;" class="skeleton-block color-gray"></span>
+                                        </div>
+                                        <div class="price bold">
+                                            <span style="width: 60px; height: 20px; margin-top: 5px;" class="skeleton-block color-gray"></span>
+                                        </div>
+                                        <div class="skeleton-block" style="width: 100px; height: 30px; margin-top: 10px;"></div>
+                                    </div>
+                                    <a href="/details/" class="button button-fill color-blue">Ver Detalhes</a>
+                                </div>
 
-      <div class="nome-rating">
-        <span style="margin-right: auto; width: 90px; height: 14px;" class="skeleton-block color-gray"></span>
-        <span style="width: 20px; height: 14px; margin-right: 5px;" class="skeleton-block color-gray"></span>
-        <span style="width: 30px; height: 14px; margin-right: 15px;" class="skeleton-block color-gray"></span>
-      </div>
+                                <!-- Skeleton Produto 2 -->
+                                <div class="item-card">
+                                    <div class="item">
+                                        <div class="img-container skeleton-block skeleton-effect-wave" style="width: 100%; height: 120px;"></div>
+                                        <div class="nome-rating">
+                                            <span style="margin-right: auto; width: 90px; height: 14px;" class="skeleton-block color-gray"></span>
+                                            <span style="width: 20px; height: 14px; margin-right: 5px;" class="skeleton-block color-gray"></span>
+                                            <span style="width: 30px; height: 14px; margin-right: 15px;" class="skeleton-block color-gray"></span>
+                                        </div>
+                                        <div class="price bold">
+                                            <span style="width: 60px; height: 20px; margin-top: 5px;" class="skeleton-block color-gray"></span>
+                                        </div>
+                                        <div class="skeleton-block" style="width: 100px; height: 30px; margin-top: 10px;"></div>
+                                    </div>
+                                    <a href="/details/" class="button button-fill color-blue">Ver Detalhes</a>
+                                </div>
 
-      <div class="price bold">
-        <span style="width: 60px; height: 20px; margin-top: 5px;" class="skeleton-block color-gray"></span>
-      </div>
+                                <!-- Skeleton Produto 3 -->
+                                <div class="item-card">
+                                    <div class="item">
+                                        <div class="img-container skeleton-block skeleton-effect-wave" style="width: 100%; height: 120px;"></div>
+                                        <div class="nome-rating">
+                                            <span style="margin-right: auto; width: 90px; height: 14px;" class="skeleton-block color-gray"></span>
+                                            <span style="width: 20px; height: 14px; margin-right: 5px;" class="skeleton-block color-gray"></span>
+                                            <span style="width: 30px; height: 14px; margin-right: 15px;" class="skeleton-block color-gray"></span>
+                                        </div>
+                                        <div class="price bold">
+                                            <span style="width: 60px; height: 20px; margin-top: 5px;" class="skeleton-block color-gray"></span>
+                                        </div>
+                                        <div class="skeleton-block" style="width: 100px; height: 30px; margin-top: 10px;"></div>
+                                    </div>
+                                    <a href="/details/" class="button button-fill color-blue">Ver Detalhes</a>
+                                </div>
 
-      <div class="skeleton-block" style="width: 100px; height: 30px; margin-top: 10px;"></div>
-    </div>
-    <a href="/details/" class="button button-fill color-blue">Ver Detalhes</a>
-  </div>
-
-  <!-- Skeleton Produto 2 -->
-  <div class="item-card">
-    <div class="item">
-      <div class="img-container skeleton-block skeleton-effect-wave" style="width: 100%; height: 120px;"></div>
-
-      <div class="nome-rating">
-        <span style="margin-right: auto; width: 90px; height: 14px;" class="skeleton-block color-gray"></span>
-        <span style="width: 20px; height: 14px; margin-right: 5px;" class="skeleton-block color-gray"></span>
-        <span style="width: 30px; height: 14px; margin-right: 15px;" class="skeleton-block color-gray"></span>
-      </div>
-
-      <div class="price bold">
-        <span style="width: 60px; height: 20px; margin-top: 5px;" class="skeleton-block color-gray"></span>
-      </div>
-
-      <div class="skeleton-block" style="width: 100px; height: 30px; margin-top: 10px;"></div>
-    </div>
-    <a href="/details/" class="button button-fill color-blue">Ver Detalhes</a>
-  </div>
-
-  <!-- Skeleton Produto 3 -->
-  <div class="item-card">
-    <div class="item">
-      <div class="img-container skeleton-block skeleton-effect-wave" style="width: 100%; height: 120px;"></div>
-
-      <div class="nome-rating">
-        <span style="margin-right: auto; width: 90px; height: 14px;" class="skeleton-block color-gray"></span>
-        <span style="width: 20px; height: 14px; margin-right: 5px;" class="skeleton-block color-gray"></span>
-        <span style="width: 30px; height: 14px; margin-right: 15px;" class="skeleton-block color-gray"></span>
-      </div>
-
-      <div class="price bold">
-        <span style="width: 60px; height: 20px; margin-top: 5px;" class="skeleton-block color-gray"></span>
-      </div>
-
-      <div class="skeleton-block" style="width: 100px; height: 30px; margin-top: 10px;"></div>
-    </div>
-    <a href="/details/" class="button button-fill color-blue">Ver Detalhes</a>
-  </div>
-
-  <!-- Skeleton Produto 4 -->
-  <div class="item-card">
-    <div class="item">
-      <div class="img-container skeleton-block skeleton-effect-wave" style="width: 100%; height: 120px;"></div>
-
-      <div class="nome-rating">
-        <span style="margin-right: auto; width: 90px; height: 14px;" class="skeleton-block color-gray"></span>
-        <span style="width: 20px; height: 14px; margin-right: 5px;" class="skeleton-block color-gray"></span>
-        <span style="width: 30px; height: 14px; margin-right: 15px;" class="skeleton-block color-gray"></span>
-      </div>
-
-      <div class="price bold">
-        <span style="width: 60px; height: 20px; margin-top: 5px;" class="skeleton-block color-gray"></span>
-      </div>
-
-      <div class="skeleton-block" style="width: 100px; height: 30px; margin-top: 10px;"></div>
-    </div>
-    <a href="/details/" class="button button-fill color-blue">Ver Detalhes</a>
-  </div>
-
-</div>
-
-                                <!-- Produto 1 -->
-                                 
-                                                             
-
-                                
+                                <!-- Skeleton Produto 4 -->
+                                <div class="item-card">
+                                    <div class="item">
+                                        <div class="img-container skeleton-block skeleton-effect-wave" style="width: 100%; height: 120px;"></div>
+                                        <div class="nome-rating">
+                                            <span style="margin-right: auto; width: 90px; height: 14px;" class="skeleton-block color-gray"></span>
+                                            <span style="width: 20px; height: 14px; margin-right: 5px;" class="skeleton-block color-gray"></span>
+                                            <span style="width: 30px; height: 14px; margin-right: 15px;" class="skeleton-block color-gray"></span>
+                                        </div>
+                                        <div class="price bold">
+                                            <span style="width: 60px; height: 20px; margin-top: 5px;" class="skeleton-block color-gray"></span>
+                                        </div>
+                                        <div class="skeleton-block" style="width: 100px; height: 30px; margin-top: 10px;"></div>
+                                    </div>
+                                    <a href="/details/" class="button button-fill color-blue">Ver Detalhes</a>
+                                </div>
 
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -215,17 +193,23 @@
 
     </div>
 
-    
     <!-- Path to Framework7 Library Bundle JS-->
     <script type="text/javascript" src="lib/framework7-bundle.min.js"></script>
     <!-- jQuery -->
     <script type="text/javascript" src="lib/jquery-3.7.0.min.js"></script>
     <!-- Roteamento do app-->
     <script type="text/javascript" src="js/routes.js"></script>
-    <script src="cordova.js"></script>
-    <script type="text/javascript" src="js/index.js"></script>
 
-    
+    <!-- Cordova (só carrega no device/emulador) -->
+    <script type="text/javascript">
+        if (window.cordova) {
+            var script = document.createElement('script');
+            script.src = "cordova.js";
+            document.head.appendChild(script);
+        }
+    </script>
+
+    <script type="text/javascript" src="js/index.js"></script>
 
 </body>
 

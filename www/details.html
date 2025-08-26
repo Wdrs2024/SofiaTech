@@ -21,6 +21,35 @@
   <link rel="stylesheet" href="css/details.css" />
 </head>
 
+<script>
+  $(document).ready(function () {
+    $('.btn-adicionar-carrinho').click(function () {
+      let nome = $('#nome-details').text().trim();
+      let preco = parseFloat($('#precopromo-detalhe').text().replace('R$', '').replace(',', '.').trim());
+      let img = $('#imagem-details').attr('src');
+
+      if (!nome || !preco) {
+        alert('Erro: Produto inválido');
+        return;
+      }
+
+      let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+
+      // Verificar se o produto já existe no carrinho
+      let index = carrinho.findIndex(item => item.nome === nome);
+      if (index >= 0) {
+        carrinho[index].quantidade++;
+      } else {
+        carrinho.push({ nome, preco, img, quantidade: 1 });
+      }
+
+      localStorage.setItem('carrinho', JSON.stringify(carrinho));
+      alert('Produto adicionado ao carrinho!');
+    });
+  });
+</script>
+
+
 <body>
   <div id="app">
     <div class="view view-main">

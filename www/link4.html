@@ -1,59 +1,197 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 
 <head>
-    <!-- Required meta tags-->
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
     <meta name="viewport"
-        content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <!-- Color theme for statusbar (Android only) -->
-    <meta name="theme-color" content="#2196f3">
-    <!-- Your app title -->
-    <title>My App</title>
-    <!-- Path to Framework7 Library Bundle CSS -->
-    <link rel="stylesheet" href="lib/framework7-bundle.min.css">
-    <!-- CSS PERSONALIZADO PARA MENU-->
-    <link rel="stylesheet" href="css/personalizado.css">
-    <!--Ícones Material Design-->
-    <link rel="stylesheet" href="css/materialdesignicons.min.css">
+      content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="theme-color" content="#2196f3" />
+    <title>SofiaTech - Meu Perfil</title>
 
+    <!-- Framework7 CSS -->
+    <link rel="stylesheet" href="lib/framework7-bundle.min.css" />
+    <!-- Ícones -->
+    <link rel="stylesheet" href="css/materialdesignicons.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
+    
+    <style>
+        /* Estilos específicos para esta página, para evitar que a imagem seja "tampada" */
+        :root {
+            --f7-theme-color: #007aff;
+        }
 
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .profile-container {
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            margin: 16px;
+            padding: 24px;
+        }
+
+        .profile-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        .profile-image-wrapper {
+            width: 96px;
+            height: 96px;
+            border-radius: 50%;
+            overflow: hidden;
+            background-color: #e0e0e0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        
+        /* Estilo para a imagem de perfil (SVG para um visual limpo) */
+        .profile-image-wrapper svg {
+            fill: #999;
+            width: 100%; /* Aumentei para 100% */
+            height: 100%; /* Aumentei para 100% */
+        }
+
+        .profile-name {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #333;
+            margin: 0;
+        }
+
+        .profile-email {
+            font-size: 1rem;
+            color: #777;
+            margin: 4px 0 0;
+        }
+
+        .edit-profile-link {
+            color: var(--f7-theme-color);
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 8px;
+        }
+        
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 12px;
+        }
+
+        .address-info {
+            line-height: 1.5;
+            color: #555;
+            margin-bottom: 24px;
+        }
+
+        .action-links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .action-link-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 16px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #333;
+            transition: background-color 0.2s ease;
+        }
+
+        .action-link-item:hover {
+            background-color: #f0f0f0;
+        }
+
+        .action-link-item i {
+            color: var(--f7-theme-color);
+            margin-right: 12px;
+            font-size: 1.25rem;
+        }
+
+        .action-link-item span {
+            font-weight: 500;
+        }
+    </style>
 </head>
 
 <body>
-    <!-- App root element -->
     <div id="app">
-
-        <!-- Your main view, should have "view-main" class -->
         <div class="view view-main">
-            <!-- Initial Page, "data-name" contains page name -->
-            <div data-name="link4" class="page">
 
-                <!-- Top Navbar -->
-                <div class="navbar">
-                    <div class="navbar-bg"></div>
-                    <div class="navbar-inner justify-content-center">
-                        <div class="title ">Link 4</div>
+            <!-- Página de Perfil do Usuário -->
+            <div data-name="usuario-perfil" class="page">
+                <div class="page-content">
+                    <div class="block-title">Meu Perfil</div>
+                    <div class="profile-container">
+                        <div class="profile-info">
+                            <div class="profile-image-wrapper">
+                                <!-- SVG para o ícone de perfil para garantir que a imagem não seja "tampada" -->
+                                 <img id="imagem-link4" src="img/Sem título.jpg" />
+          </div>
+                            <h1 class="profile-name">Sofia Barbosa</h1>
+                            <p class="profile-email">sofia.barbosa@email.com</p>
+                            <a href="#" class="edit-profile-link">Editar Perfil</a>
+                        </div>
+                        
+                        <div class="address-info">
+                            <p class="section-title">Endereço</p>
+                            <p>Rua das Flores, 123</p>
+                            <p>São Paulo - SP</p>
+                        </div>
+
+                        <div class="action-links">
+                            <a href="#" class="action-link-item">
+                                <i class="ri-file-list-2-line"></i>
+                                <span>Meus Pedidos</span>
+                            </a>
+                            <a href="#" class="action-link-item">
+                                <i class="ri-heart-line"></i>
+                                <span>Favoritos</span>
+                            </a>
+                            <a href="#" class="action-link-item">
+                                <i class="ri-logout-box-r-line"></i>
+                                <span>Sair</span>
+                            </a>
+                        </div>
                     </div>
                 </div>
+            </div>
 
-                <!-- Scrollable page content -->
-                <div class="page-content">
-                    <div class="block">
-                        Conteúdo do link 4
-                    </div>
+            <!-- Menu Principal -->
+            <div id="menuPrincipal" class="toolbar toolbar-bottom">
+                <div class="toolbar-inner display-flex">
+                    <a href="/index/" class="tab-link link">
+                        <i class="ri-home-5-line"></i>
+                        <span>Home</span>
+                    </a>
+                    <a href="/link2/" class="tab-link link">
+                        <i class="mdi mdi-magnify"></i>
+                        <span>Busca</span>
+                    </a>
+                    <a href="/link3/" class="tab-link link">
+                        <i class="ri-heart-2-line"></i>
+                        <span>Favoritos</span>
+                    </a>
+                    <a href="/link4/" class="tab-link link tab-link-active">
+                        <i class="ri-user-fill"></i>
+                        <span>Usuarios</span>
+                    </a>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Path to Framework7 Library Bundle JS-->
-    <script type="text/javascript" src="lib/framework7-bundle.min.js"></script>
-	<!-- jQuery -->
-	<script type="text/javascript" src="lib/jquery-3.7.0.min.js"></script>	
-    <!-- Roteamento do app-->
-    <script type="text/javascript" src="js/routes.js"></script>
-    <script src="cordova.js"></script>
 </body>
 
 </html>
